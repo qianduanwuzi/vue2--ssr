@@ -17,7 +17,8 @@ module.exports = {
   ** route切换 过渡css
   */ 
   css: [
-    'assets/main.css'
+    'assets/main.css',
+    'swiper/dist/css/swiper.css'
   ],
   /*
   ** Customize the progress bar color
@@ -40,12 +41,17 @@ module.exports = {
     //     })
     //   }
     // }
-    vendor: ['axios','vue-notifications']
+    vendor: [
+            'axios',
+            'vue-notifications',
+            'vue-awesome-swiper'
+            ]
   },
   /*
   ** plugin
   */
   plugins: [
-    { src: '~plugins/vue-notifications', ssr: false }
+    { src: '~plugins/vue-notifications', ssr: false },
+    { src: '~plugins/vue-swiper.js', ssr: false },
   ]
 }

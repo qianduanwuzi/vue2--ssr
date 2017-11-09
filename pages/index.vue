@@ -10,11 +10,36 @@
 
 <script>
 import Logo from '~/components/Logo.vue'
-
+import axios from 'axios'
 export default {
+  asyncData(context) {
+    // console.log('11', context)
+    return { name: 'posts', title: '123' }
+  },
+  // asyncData ({ params }) {
+  //     return axios.get(`https://my-api/posts/${params.id}`)
+  //     .then((res) => {
+  //     return { title: res.data.title }
+  //     })
+  // },
+  // async asyncData ({ params }) {
+  //     let { data } = await axios.get(`https://my-api/posts/${params.id}`)
+  //     return { title: data.title }
+  // },
+  fetch() {
+
+  },
+  head() {
+    return {
+      title: this.title,
+      meta: [
+        { hid: 'description', name: 'description', content: 'this is posts' }
+      ]
+    }
+  },
   methods: {
     click(t) {
-      if(t == 1) this.$router.push('test')
+      if (t == 1) this.$router.push('test')
       else this.$router.push('testSecond')
     }
   },
@@ -34,7 +59,8 @@ export default {
 }
 
 .title {
-  font-family: "Quicksand", "Source Sans Pro", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; /* 1 */
+  font-family: "Quicksand", "Source Sans Pro", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  /* 1 */
   display: block;
   font-weight: 300;
   font-size: 100px;
