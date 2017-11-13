@@ -1,30 +1,35 @@
 <template>
   <div>
+    <!--<div class="">
+        <menus></menus>
+    </div>-->
     <div class="banner">
         <banner :imgs="imgs"></banner>
     </div>
-    <div>
-        this is nav
+    <div class="">
+        <menus></menus>
     </div>
     <nuxt/>
   </div>
 </template>
 
 <script>
+import menus from '~/components/portal/menu/menu.vue';
 import banner from '~/components/banner';
-import lun1 from '~/assets/lun1.jpg';
-import lun2 from '~/assets/lun2.jpg';
-import lun3 from '~/assets/lun3.jpg';
-import lun4 from '~/assets/lun4.jpg';
-import lun5 from '~/assets/lun5.jpg';
-import lun6 from '~/assets/lun6.jpg';
+import lun1 from '~/assets/b1.jpg';
+import lun2 from '~/assets/b2.jpg';
+// import lun3 from '~/assets/lun3.jpg';
+// import lun4 from '~/assets/lun4.jpg';
+// import lun5 from '~/assets/lun5.jpg';
+// import lun6 from '~/assets/lun6.jpg';
 export default {
   components: {
-    banner
+    banner,
+    menus
   },
   data() {
     return {
-      imgs: [lun1, lun2, lun3, lun4, lun5, lun6]
+      imgs: [lun1, lun2]
     }
   }
 }
@@ -33,8 +38,7 @@ export default {
 <style>
 .banner{
   /*background: url('~assets/banner.png') no-repeat center 100%*/
-  width: 1920px;
-  height: 500px;
+  max-width: 1920px;
   margin: 0 auto
 }
 

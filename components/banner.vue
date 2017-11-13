@@ -7,7 +7,7 @@
             </swiper-slide>
       </span>-->
     <swiper-slide v-for="(one, index) in imgs" :key="index">
-        <img :src="one" alt="">
+        <img :src="one" alt="" >
     </swiper-slide>
     <!--<div class="swiper-pagination"  slot="pagination"></div>
     <div class="swiper-button-prev" slot="button-prev"></div>
@@ -37,7 +37,7 @@
           autoplay: 3000,
           direction: 'horizontal',
           grabCursor: true, // 手指形状
-          height: 500,
+        //   height: 500,
         //   setWrapperSize: true, 
         //   autoHeight: true,
         //   pagination: '.swiper-pagination',
