@@ -1,15 +1,24 @@
 <template>
   <div>
-    <!--<div class="">
-        <menus></menus>
-    </div>-->
-    <div class="banner">
+    <div class="leftMenu">
+      <div class="expand">
+          
+      </div>
+      <div class="">
+
+      </div>
+    </div>
+    <div>
+      <div class="banner">
         <banner :imgs="imgs"></banner>
-    </div>
-    <div class="">
+      </div>
+      <div class="menus">
         <menus></menus>
+      </div>
+      <div class="nuxt">
+        <nuxt/>
+      </div>
     </div>
-    <nuxt/>
   </div>
 </template>
 
@@ -36,7 +45,7 @@ export default {
 </script>
 
 <style>
-.banner{
+.banner {
   /*background: url('~assets/banner.png') no-repeat center 100%*/
   max-width: 1920px;
   margin: 0 auto
@@ -53,12 +62,30 @@ html {
   box-sizing: border-box;
 }
 
-*, *:before, *:after {
+*,
+*:before,
+*:after {
   box-sizing: border-box;
   margin: 0;
 }
 
-.button--green {
+.menus {
+  width: 1500px;
+  margin: 0 auto;
+  height: 70px;
+}
+
+.nuxt {
+  border-radius: 10px;
+  width: 1280px;
+  margin: 0 auto;
+  border: 1px solid #ddd;
+  box-shadow: 1px 1px 2px 2px#a3a3a3;
+  min-height: 500px;
+}
+
+
+/*.button--green {
   display: inline-block;
   border-radius: 4px;
   border: 1px solid #3b8070;
@@ -85,5 +112,5 @@ html {
 .button--grey:hover {
   color: #fff;
   background-color: #35495e;
-}
+}*/
 </style>
