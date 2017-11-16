@@ -1,14 +1,15 @@
 <template>
   <div>
-    <div class="leftMenu">
-      <div class="expand">
-          
+    <div :class="['leftMenu', showExPand? 'after_leftMenu' : '']">
+      <div :class="['expand', showExPand? 'showExPand' : '']" v-if="showExPand">
+          this is expand
       </div>
-      <div class="">
-
+      <div class="leftFixedMenu" @click="clickleftFixedMenu">
+          left固定
       </div>
+      <div style="clear: both"></div>
     </div>
-    <div>
+    <div :class="['rightMenu', showExPand? 'after_rightmenu' : '']">
       <div class="banner">
         <banner :imgs="imgs"></banner>
       </div>
@@ -38,7 +39,13 @@ export default {
   },
   data() {
     return {
-      imgs: [lun1, lun2]
+      imgs: [lun1, lun2],
+      showExPand: false
+    }
+  },
+  methods:{
+    clickleftFixedMenu() {
+      this.showExPand = true;
     }
   }
 }
@@ -62,6 +69,15 @@ html {
   box-sizing: border-box;
 }
 
+*{
+  margin: 0;
+  padding: 0;
+}
+
+a{
+  text-decoration: none
+}
+
 *,
 *:before,
 *:after {
@@ -82,6 +98,51 @@ html {
   border: 1px solid #ddd;
   box-shadow: 1px 1px 2px 2px#a3a3a3;
   min-height: 500px;
+}
+
+.leftMenu{
+  width: 100px;
+  float: left;
+  
+}
+
+.after_leftMenu{
+  width: 300px;
+}
+
+.rightMenu{
+  float: right;
+  width: calc(100% - 100px)
+}
+
+.after_rightmenu{
+  width: calc(100% - 300px)
+}
+
+.expand{
+  /*display: none;*/
+  float: left;
+  width: 0px;
+  transition: all 2s ;
+  -moz-transition:all 2s; /* Firefox 4 */
+  -webkit-transition:all 2s; /* Safari and Chrome */
+  -o-transition:all 2s; /* Opera */
+  background-color: #060606;
+  color: white;
+  height: calc(100% -0px);
+}
+
+.showExPand{
+  /*display: block;*/
+  width: 200px;
+}
+
+.leftFixedMenu{
+  float: right;
+  background-color: #212121;
+  color: white;
+  width: 100px;
+  height: calc(100% -0px);
 }
 
 
