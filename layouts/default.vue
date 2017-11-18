@@ -1,11 +1,15 @@
 <template>
   <div>
     <div :class="['leftMenu', showExPand? 'after_leftMenu' : '']">
-      <div :class="['expand', showExPand? 'showExPand' : '']" v-if="showExPand">
+      <div :class="['expand', showExPand? 'showExPand' : '']" ref="expand">
+        <div :class="['expandTxt',showExPand? 'after_expandTxt' : '' ]">
           this is expand
+        </div>
       </div>
-      <div class="leftFixedMenu" @click="clickleftFixedMenu">
+      <div :class="['leftFixedMenu', showExPand? 'after_lfm' : '']" @click="clickleftFixedMenu" ref="leftFixedMenu">
+        <div :class="['leftMenuTxt', showExPand? 'after_lmt' : '']">
           left固定
+        </div>
       </div>
       <div style="clear: both"></div>
     </div>
@@ -28,10 +32,6 @@ import menus from '~/components/portal/menu/menu.vue';
 import banner from '~/components/banner';
 import lun1 from '~/assets/b1.jpg';
 import lun2 from '~/assets/b2.jpg';
-// import lun3 from '~/assets/lun3.jpg';
-// import lun4 from '~/assets/lun4.jpg';
-// import lun5 from '~/assets/lun5.jpg';
-// import lun6 from '~/assets/lun6.jpg';
 export default {
   components: {
     banner,
@@ -43,9 +43,22 @@ export default {
       showExPand: false
     }
   },
-  methods:{
+  created() {
+  },
+  mounted: function() {
+    this.$nextTick(() => {
+      this.$refs.leftFixedMenu.style.height = window.screen.availHeight + 'px';
+    })
+  },
+  methods: {
     clickleftFixedMenu() {
-      this.showExPand = true;
+      if (this.showExPand) this.showExPand = false
+      else {
+        this.showExPand = true;
+        this.$nextTick(() => {
+          this.$refs.expand.style.height = window.screen.availHeight + 'px';
+        })
+      }
     }
   }
 }
@@ -53,7 +66,6 @@ export default {
 
 <style>
 .banner {
-  /*background: url('~assets/banner.png') no-repeat center 100%*/
   max-width: 1920px;
   margin: 0 auto
 }
@@ -69,12 +81,13 @@ html {
   box-sizing: border-box;
 }
 
-*{
+
+* {
   margin: 0;
   padding: 0;
 }
 
-a{
+a {
   text-decoration: none
 }
 
@@ -100,78 +113,88 @@ a{
   min-height: 500px;
 }
 
-.leftMenu{
+.leftMenu {
   width: 100px;
   float: left;
-  
 }
 
-.after_leftMenu{
+.after_leftMenu {
   width: 300px;
 }
 
-.rightMenu{
+.rightMenu {
   float: right;
-  width: calc(100% - 100px)
+  width: calc(100% - 100px);
+  transition: all 0.5s;
 }
 
-.after_rightmenu{
+.after_rightmenu {
   width: calc(100% - 300px)
 }
 
-.expand{
-  /*display: none;*/
-  float: left;
+.expand {
+  position: fixed;
+  top: 0px;
   width: 0px;
-  transition: all 2s ;
-  -moz-transition:all 2s; /* Firefox 4 */
-  -webkit-transition:all 2s; /* Safari and Chrome */
-  -o-transition:all 2s; /* Opera */
+  transition: all 0.5s;
+  -moz-transition: all 0.5s;
+  /* Firefox 4 */
+  -webkit-transition: all 0.5s;
+  /* Safari and Chrome */
+  -o-transition: all 0.5s;
+  /* Opera */
   background-color: #060606;
-  color: white;
-  height: calc(100% -0px);
 }
 
-.showExPand{
-  /*display: block;*/
+.showExPand {
+  color: #fff;
   width: 200px;
+ 
 }
 
-.leftFixedMenu{
-  float: right;
+.expandTxt {
+  color: #000;
+  transition: all 1.5s;
+  -moz-transition: all 1.5s;
+  -webkit-transition: all 1.5s;
+  -o-transition: all 1.5s;
+}
+
+.after_expandTxt {
+  color: #fff;
+}
+
+.leftFixedMenu {
+  text-align: center;
+  position: fixed;
+  top: 0px;
+  left: 0px;
   background-color: #212121;
   color: white;
   width: 100px;
-  height: calc(100% -0px);
+  transition: all 0.5s;
+  -webkit-transition: all 0.5s;
+  -moz-transition: all 0.5s;
+  -o-transition: all 0.5s;
+  cursor: pointer;
 }
 
-
-/*.button--green {
-  display: inline-block;
-  border-radius: 4px;
-  border: 1px solid #3b8070;
-  color: #3b8070;
-  text-decoration: none;
-  padding: 10px 30px;
+.after_lfm {
+  left: 200px;
 }
 
-.button--green:hover {
-  color: #fff;
-  background-color: #3b8070;
+.leftMenuTxt {
+  position: fixed;
+  top: 50%;
+  left: 15px;
+  transition: all 0.5s;
+  -webkit-transition: all 0.5s;
+  -moz-transition: all 0.5s;
+  -o-transition: all 0.5s;
 }
 
-.button--grey {
-  display: inline-block;
-  border-radius: 4px;
-  border: 1px solid #35495e;
-  color: #35495e;
-  text-decoration: none;
-  padding: 10px 30px;
-  margin-left: 15px;
+.after_lmt {
+  transform: rotateY(360deg);
+  left: 215px;
 }
-
-.button--grey:hover {
-  color: #fff;
-  background-color: #35495e;
-}*/
 </style>
