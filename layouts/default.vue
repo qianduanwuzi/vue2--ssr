@@ -8,7 +8,9 @@
       </div>
       <div :class="['leftFixedMenu', showExPand? 'after_lfm' : '']" @click="clickleftFixedMenu" ref="leftFixedMenu">
         <div :class="['leftMenuTxt', showExPand? 'after_lmt' : '']">
-          left固定
+          <!--left固定-->
+          <!--<img :src="point" alt="" :class="animate? 'img_point' : ''" @mouseover="mouseOver" @mouseout="mouseOut">-->
+           <img :src="point" alt="" class="img_point" @mouseover="mouseOver" @mouseout="mouseOut">
         </div>
       </div>
       <div style="clear: both"></div>
@@ -30,8 +32,9 @@
 <script>
 import menus from '~/components/portal/menu/menu.vue';
 import banner from '~/components/banner';
-import lun1 from '~/assets/b1.jpg';
+import lun1 from '~/assets/b1.jpg'; //看文档静态文件可直接引图片路径
 import lun2 from '~/assets/b2.jpg';
+import point from '~/assets/hand_point.png';
 export default {
   components: {
     banner,
@@ -40,7 +43,9 @@ export default {
   data() {
     return {
       imgs: [lun1, lun2],
-      showExPand: false
+      showExPand: false,
+      point: point,
+      animate: true, // point 动画是否起作用
     }
   },
   created() {
@@ -59,6 +64,12 @@ export default {
           this.$refs.expand.style.height = window.screen.availHeight + 'px';
         })
       }
+    },
+    mouseOver() {
+      this.animate = false;
+    },
+    mouseOut() {
+      this.animate = true;
     }
   }
 }
@@ -149,15 +160,14 @@ a {
 .showExPand {
   color: #fff;
   width: 200px;
- 
 }
 
 .expandTxt {
   color: #000;
-  transition: all 1.5s;
-  -moz-transition: all 1.5s;
-  -webkit-transition: all 1.5s;
-  -o-transition: all 1.5s;
+  transition: all 2s;
+  -moz-transition: all 2s;
+  -webkit-transition: all 2s;
+  -o-transition: all 2s;
 }
 
 .after_expandTxt {
@@ -196,5 +206,61 @@ a {
 .after_lmt {
   transform: rotateY(360deg);
   left: 215px;
+}
+
+.img_point {
+  animation: pointAnimate 4s infinite;
+  -webkit-animation: pointAnimate 4s infinite;
+  -o-animation: pointAnimate 4s infinite;
+  -moz-animation: pointAnimate 4s infinite;
+  ;
+}
+
+@keyframes pointAnimate {
+  0% {
+    width: 70px
+  }
+  50% {
+    width: 80px
+  }
+  100% {
+    width: 70px
+  }
+}
+
+@-moz-keyframes pointAnimate {
+  0% {
+    width: 70px
+  }
+  50% {
+    width: 80px
+  }
+  100% {
+    width: 70px
+  }
+}
+
+@-webkit-keyframes pointAnimate {
+  0% {
+    width: 70px
+  }
+  50% {
+    width: 80px
+  }
+  100% {
+    width: 70px
+  }
+}
+
+@-o-keyframes pointAnimate {
+  0% {
+    width: 70px
+  }
+  50% {
+    width: 80px
+  }
+  100% {
+    width: 70px
+  }
 }
 </style>
