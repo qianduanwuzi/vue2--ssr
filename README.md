@@ -2,6 +2,9 @@
 
 > Nuxt.js project
 
+# base
+> 基于vue社区的服务端NUXT文档开发。
+
 ## Build Setup
 
 ``` bash
