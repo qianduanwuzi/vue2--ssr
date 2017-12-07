@@ -3,14 +3,14 @@
     <div :class="['leftMenu', showExPand? 'after_leftMenu' : '']">
       <div :class="['expand', showExPand? 'showExPand' : '']" ref="expand">
         <div :class="['expandTxt',showExPand? 'after_expandTxt' : '' ]">
-          this is expand
+          <left-menu :visible="showExPand"></left-menu>
         </div>
       </div>
       <div :class="['leftFixedMenu', showExPand? 'after_lfm' : '']" @click="clickleftFixedMenu" ref="leftFixedMenu">
         <div :class="['leftMenuTxt', showExPand? 'after_lmt' : '']">
           <!--left固定-->
           <!--<img :src="point" alt="" :class="animate? 'img_point' : ''" @mouseover="mouseOver" @mouseout="mouseOut">-->
-           <img :src="point" alt="" class="img_point" @mouseover="mouseOver" @mouseout="mouseOut">
+          <img :src="point" alt="" class="img_point" @mouseover="mouseOver" @mouseout="mouseOut">
         </div>
       </div>
       <div style="clear: both"></div>
@@ -30,6 +30,7 @@
 </template>
 
 <script>
+import leftMenu from '~/components/portal/menu/leftMenu'
 import menus from '~/components/portal/menu/menu.vue';
 import banner from '~/components/banner';
 import lun1 from '~/assets/b1.jpg'; //看文档静态文件可直接引图片路径
@@ -38,7 +39,8 @@ import point from '~/assets/hand_point.png';
 export default {
   components: {
     banner,
-    menus
+    menus,
+    leftMenu
   },
   data() {
     return {
@@ -99,6 +101,7 @@ html {
 }
 
 a {
+  color: inherit;
   text-decoration: none
 }
 
@@ -164,6 +167,7 @@ a {
 
 .expandTxt {
   color: #000;
+  /*font-size: 18px;*/
   transition: all 2s;
   -moz-transition: all 2s;
   -webkit-transition: all 2s;
