@@ -6,7 +6,7 @@
 > 基于vue社区的服务端NUXT文档开发。
 
 # view  
-https://github.com/qianduanwuzi/img/blob/master/gif/ssr-pc.gif
+ ![image](https://github.com/qianduanwuzi/img/blob/master/gif/ssr-pc.gif)
 
 ## Build Setup
 
